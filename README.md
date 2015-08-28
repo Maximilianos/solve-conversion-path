@@ -2,6 +2,8 @@
 
 ## Install
 
+Via [npm](https://www.npmjs.com/package/solve-conversion-path):
+
 ```
 npm i --save solve-conversion-path
 ```
