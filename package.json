@@ -4,6 +4,7 @@
   "description": "Given an array of converters with a 'from' and 'to' property and an array of available formats in strings, find the smallest number of convertions of the available formats required, in order to reach the requested format",
   "main": "solveConversionPath.js",
   "scripts": {
+    "build": "babel src/solveConversionPath.js -o solveConversionPath.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,12 +12,16 @@
     "url": "git+https://github.com/Maximilianos/solve-conversion-path.git"
   },
   "keywords": [
-    "algorithm"
+    "algorithm",
+    "solver"
   ],
   "author": "Max GJ Panas <m@maxpanas.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Maximilianos/solve-conversion-path/issues"
   },
-  "homepage": "https://github.com/Maximilianos/solve-conversion-path#readme"
+  "homepage": "https://github.com/Maximilianos/solve-conversion-path#readme",
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
 }

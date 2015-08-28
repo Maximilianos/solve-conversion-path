@@ -12,75 +12,83 @@
  *
  * @returns {Boolean|Array}
  */
-export default function solveConversionPath(converters, availableFormats, format) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports["default"] = solveConversionPath;
+
+function solveConversionPath(converters, availableFormats, format) {
 	if (availableFormats.includes(format)) {
-		throw new Error(`Format: '${format}' already exists in the given available formats`);
+		throw new Error("Format: '" + format + "' already exists in the given available formats");
 	}
 
 	/**
-	 * Step 1. Collect all converters
-	 * that convert TO the requested
-	 * format
-	 *
-	 * @type {Array}
-	 */
-	const convertersToFormat = converters
-		.filter(converter => converter.to === format);
+  * Step 1. Collect all converters
+  * that convert TO the requested
+  * format
+  *
+  * @type {Array}
+  */
+	var convertersToFormat = converters.filter(function (converter) {
+		return converter.to === format;
+	});
 
 	if (!convertersToFormat) {
 		return false;
 	}
 
 	/**
-	 * Step 2. Check if any of the above
-	 * converters convert FROM an available
-	 * format. If we find one, return it!
-	 *
-	 * @type {Object|null}
-	 */
-	const converterFromAvailableFormats = convertersToFormat
-		.find(converter => availableFormats.includes(converter.from));
+  * Step 2. Check if any of the above
+  * converters convert FROM an available
+  * format. If we find one, return it!
+  *
+  * @type {Object|null}
+  */
+	var converterFromAvailableFormats = convertersToFormat.find(function (converter) {
+		return availableFormats.includes(converter.from);
+	});
 
 	if (converterFromAvailableFormats) {
 		return [converterFromAvailableFormats];
 	}
 
 	/**
-	 * Step 3. Filter the available converters,
-	 * removing any converters that convert
-	 * FROM a format that has been evaluated
-	 * in this function
-	 *
-	 * @type {Array}
-	 */
-	const usedConverters = convertersToFormat
-		.map(converter => converter.from)
-		.concat(format);
+  * Step 3. Filter the available converters,
+  * removing any converters that convert
+  * FROM a format that has been evaluated
+  * in this function
+  *
+  * @type {Array}
+  */
+	var usedConverters = convertersToFormat.map(function (converter) {
+		return converter.from;
+	}).concat(format);
 
-	const remainingConverters = converters
-		.filter(converter => !usedConverters.includes(converter.from));
-
-	/**
-	 * Step. 4. Recursively call solveConversionPath
-	 * on the discovered converters that convert
-	 * TO the requested format until either a
-	 * full path is formed, or no path can be formed
-	 *
-	 * @type {Array|null}
-	 */
-	const conversionPath = convertersToFormat
-			.map(converter => {
-				const path = solveConversionPath(
-					remainingConverters,
-					availableFormats,
-					converter.from
-				);
-				return path ? path.concat(converter) : false;
-			})
-			.find(path => !!path);
+	var remainingConverters = converters.filter(function (converter) {
+		return !usedConverters.includes(converter.from);
+	});
 
 	/**
-	 * Return the discovered path or else return false
-	 */
+  * Step. 4. Recursively call solveConversionPath
+  * on the discovered converters that convert
+  * TO the requested format until either a
+  * full path is formed, or no path can be formed
+  *
+  * @type {Array|null}
+  */
+	var conversionPath = convertersToFormat.map(function (converter) {
+		var path = solveConversionPath(remainingConverters, availableFormats, converter.from);
+		return path ? path.concat(converter) : false;
+	}).find(function (path) {
+		return !!path;
+	});
+
+	/**
+  * Return the discovered path or else return false
+  */
 	return conversionPath ? conversionPath : false;
 }
+
+module.exports = exports["default"];
