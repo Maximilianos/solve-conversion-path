@@ -30,6 +30,60 @@ const color['cmyk'] = conversionPath.reduce(
 );
 ```
 
+## Example
+
+```javascript
+import solveConversionPath from 'solve-conversion-path';
+
+
+const availableFormats = [ 'lab' ];
+
+
+const converters = [
+	{ convert() {}, from: 'rgb', to: 'hex' },
+	{ convert() {}, from: 'hex', to: 'rgb' },
+	{ convert() {}, from: 'rgb', to: 'hsl' },
+	{ convert() {}, from: 'hsl', to: 'rgb' },
+	{ convert() {}, from: 'rgb', to: 'lab' },
+	{ convert() {}, from: 'lab', to: 'rgb' },
+	{ convert() {}, from: 'cmyk', to: 'hex' },
+	{ convert() {}, from: 'hex', to: 'cmyk' },
+	{ convert() {}, from: 'hsv', to: 'cmyk' },
+	{ convert() {}, from: 'cmyk', to: 'hsv' },
+];
+
+
+console.log(
+	'solved:',
+	JSON.stringify(
+		solveConversionPath(converters, availableFormats, 'hsv'),
+		null,
+		2
+	)
+);
+
+/*/ OUTPUTS in console:
+solved: [
+  {
+    "from": "lab",
+    "to": "rgb"
+  },
+  {
+    "from": "rgb",
+    "to": "hex"
+  },
+  {
+    "from": "hex",
+    "to": "cmyk"
+  },
+  {
+    "from": "cmyk",
+    "to": "hsv"
+  }
+]
+*/
+```
+
 ## License
 
 MIT
