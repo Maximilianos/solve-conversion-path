@@ -35,9 +35,7 @@ const color['cmyk'] = conversionPath.reduce(
 ```javascript
 import solveConversionPath from 'solve-conversion-path';
 
-
 const availableFormats = [ 'lab' ];
-
 
 const converters = [
 	{ convert() {}, from: 'rgb', to: 'hex' },
@@ -51,7 +49,6 @@ const converters = [
 	{ convert() {}, from: 'hsv', to: 'cmyk' },
 	{ convert() {}, from: 'cmyk', to: 'hsv' },
 ];
-
 
 console.log(
 	'solved:',
