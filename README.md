@@ -13,9 +13,9 @@ restricted to operations on color conversion paths.
 
 This conversion/transform path solver expects to be given three things:
 
-	1. An `Array` of "converters" with "from" and "to" properties. (eg: `[{ convert() {}, from: 'hsv', to: 'cmyk' }, ...]`)
-	2. An `Array` of already available "formats". Essentially starting points for the conversion. (eg: `['hex', 'rgb', 'hsl']`)
-	3. A `String` representing the desired output "format". (eg: `'cmyk'`)
+1. An `Array` of "converters" with "from" and "to" properties. (eg: `[{ convert() {}, from: 'hsv', to: 'cmyk' }, ...]`)
+2. An `Array` of already available "formats". Essentially starting points for the conversion. (eg: `['hex', 'rgb', 'hsl']`)
+3. A `String` representing the desired output "format". (eg: `'cmyk'`)
 
 If the conversion from the available "formats" to the desired output "format" is possible, the function
 will return an `Array` with the fewest steps needed to transform one of the already available "formats"
