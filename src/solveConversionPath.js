@@ -2,7 +2,7 @@
  * Given an array of converters with
  * a 'from' and 'to' property and an
  * array of available formats in strings,
- * find the smallest number of convertions
+ * find the smallest number of conversions
  * of the available formats required, in
  * order to reach the requested format
  *
