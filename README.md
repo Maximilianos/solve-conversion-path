@@ -5,7 +5,7 @@
 Via [npm](https://www.npmjs.com/package/solve-conversion-path):
 
 ```
-npm i --save solve-conversion-path
+npm i solve-conversion-path
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ It is then simple to transform to the desired "format" using `Array.prototype.re
 ```javascript
 const color['cmyk'] = conversionPath.reduce(
 	(output, converter) => converter.convert(output),
-	color[conversionPath.first().from]
+	color[conversionPath[0].from]
 );
 ```
 
@@ -61,7 +61,7 @@ console.log(
 	)
 );
 
-/*/ OUTPUTS in console:
+/* OUTPUTS in console:
 solved: [
   {
     "from": "lab",
